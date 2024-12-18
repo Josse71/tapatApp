@@ -1,53 +1,34 @@
 classDiagram
-class User {
-+int id
-+varchar username(20)
-+varchar password(20)
-+varchar email(50)
+Usuari "" --> "0..N" Child
+Child "" --> "1..1" Treatment
+Child "" --> "0..N" Tap
+
+class Usuari {
+        -int id
+        -String username
+        -String password
+        -String contrasenya
+        +consultarInfants(): void
+        +iniciarSessio(): boolean
 }
 
-class Rol {
-+int id
-+varchar type_rol(20)
+class Child{
+        -int id
+        -String child_name
+        -int sleep_average
+        
+        +consultarTractament: Treatment
+        +consultarTap: array(Tap)
 }
 
-class RelationUserChild {
-+int user_id
-+int child_id
-+int rol_id
+class Treatment{
+        -int id
+        -String name
 }
 
-class Child {
-+int id
-+varchar child_name(50)
-+int sleep_average
-+int treatment_id
-+int time
+class Tap{
+        -int id
+        -int status
+        -datetime init 
+        -datetime end 
 }
-
-class Treatment {
-+int id
-+varchar name(11)
-}
-
-class Status {
-+int id
-+varchar name(40)
-}
-
-class Tap {
-+int id
-+int child_id
-+int status_id
-+int user_id
-+datetime init
-+datetime end
-}
-
-User "1" -- "1..*" RelationUserChild : porta
-Child "1" -- "1..*" RelationUserChild : relacionat
-Rol "1" -- "1..*" RelationUserChild : assignat
-Child "1" -- "1" Treatment : té
-Child "1" -- "1..*" Tap : monitoritzat
-Status "1" -- "1..*" Tap : registra
-User "1" -- "1..*" Tap : realitza

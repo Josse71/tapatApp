@@ -1,1 +1,1 @@
-[DESCRIPCIÓN TAPATAPP](main/descTapatApp.md)
+[DESCRIPCIÓN TAPATAPP](descTapatapp.md)

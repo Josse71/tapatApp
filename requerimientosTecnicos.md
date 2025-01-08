@@ -6,12 +6,13 @@
 El backend serà el cor del sistema, encarregat de gestionar dades, usuaris, i la lògica del sistema.
 
 ### a. Requisits del servidor
-Allotjament
-Base de dades
-Sistema operatiu del servidor
-APIs i serveis web
+Allotjament: Hosting Compartido.
+Base de dades: MYSQL.
+Sistema operatiu del servidor: Linux.
+APIs i serveis web: RESTFul Flask.
 
 ### b. Llenguatges de programació
+Flutter.
 
 ### c. Seguretat
 Autenticació i autorització
@@ -26,9 +27,9 @@ Compatibilitat dispositius
 
 ## 3. Requisits Generals
 ### a. Gestió d'usuari i autenticació
-Rols d’usuari
-Base de dades
-Seguretat
+Rols d’usuari: Administrador - Cuidador - Padre/Madre.
+Base de dades: MYSQL
+Seguretat: 
 
 ### b. Emmagatzematge local i sincronització
 Dades que es guarden en local, són sensibles?

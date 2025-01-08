@@ -32,8 +32,8 @@ El backend serà el cor del sistema, encarregat de gestionar dades, usuaris, i l
 - Seguretat: Login con función de doble verificación.
 
 ### b. Emmagatzematge local i sincronització
--Dades que es guarden en local, són sensibles? Sí, la información proporcionada por los tutores de guardan localmente.
--Seguretat: Mediante cifrado, FACE ID y/o huella dactilar.
+- Dades que es guarden en local, són sensibles? Sí, la información proporcionada por los tutores de guardan localmente.
+- Seguretat: Mediante cifrado, FACE ID y/o huella dactilar.
 
 ### c. Gestió d’accessibilitat
 - Nivells A, AA y AAA d’accessibilitat: AA.

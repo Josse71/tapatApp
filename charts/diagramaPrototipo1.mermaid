@@ -3,5 +3,5 @@ flowchart TD
     B -->|Petición HTTP GET username| C[<b>Servidor</b> <br> Webservice]
     C -->|Consulta DAOUser| D[Server DAO User getUserByUsername]
     D -->|respon Objecte User if exists| C
-    C -->|Respuesta HTTP| B
-    B -->|Datos procesados| F[Cliente - Vista de resultados]
+    C -->|Resposta HTTP amb Jason User if exists| B
+    B -->|Dades processades| F[Client View <br> Show User if exists]

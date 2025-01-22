@@ -3,3 +3,5 @@
 [DESCRIPCIÓN TAPATAPP](descTapatapp.md)
 
 [REQUERIMIENTOS TÉCNICOS](requerimientosTecnicos.md)
+
+[HTTP REQUEST RESPONSE](httpreqresponse.md)

@@ -4,4 +4,4 @@
 
 [REQUERIMIENTOS TÉCNICOS](requerimientosTecnicos.md)
 
-[HTTP REQUEST RESPONSE](httpreqresponse.md)
+[HTTP REQUEST RESPONSE](httpRequest.md)

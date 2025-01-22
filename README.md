@@ -17,6 +17,6 @@
 - Parameters: username
 - Resposta: 
 
-Code 200 Ok: {id=1,"username":"dani", "password":"montes", "email":"danimontes@gmail.com"}
+Code 200 Ok: {id=1,"username":"josse", "password":"gomez", "email":"josegomez99@gmail.com"}
 
 Code 400 No trobat: {"error": "No trobat"}

@@ -12,11 +12,8 @@ Un HTTP request és una sol·licitud que un client (normalment un navegador web 
 1. Mètode HTTP: Indica el tipus d'acció que el client vol fer. Els mètodes més comuns són:
 
 - GET: Demanar dades o recursos (com una pàgina web).
-
 - POST: Enviar dades al servidor (per exemple, formularis).
-
 - PUT: Actualitzar recursos existents al servidor.
-
 - DELETE: Eliminar un recurs al servidor.
 
 2. URL (Uniform Resource Locator): Especifica el recurs que es vol accedir o modificar.

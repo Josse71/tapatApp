@@ -1,0 +1,20 @@
+flowchart TD
+    A[Inicio] --> C[Registro]
+    A[Inicio] --> B[Login]
+    A[Inicio] --> E[Contacta con nosotros]
+    B --> F[He olvidado mi contraseña]
+    B --> |Credenciales correctas| G{Login ok}
+    C --> |Datos correctos| H{Registro ok}
+    F --> |Clave recuperada| I{Login ok}
+    F --> |Clave no recuperada| E[Contacta con nosotros]
+    G --> J[Pantalla principal]
+    H --> J
+    I --> J
+    J --> K[Niños a cargo]
+    K --> |Niño seleccionado| N[Horas activas del pegat]
+    J --> L[Configuración]
+    L --> O[Editar perfil]
+    O --> Q[Modificar datos personales]
+    L --> P[Configuraciones generales]
+    J --> M[Cerrar sesión]
+    M --> A

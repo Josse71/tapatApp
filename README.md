@@ -65,5 +65,9 @@ Si us plau, revisa el teu input."
 "status": "error",
 "message": "Error intern al servidor. Si us plau, torni-ho a provar més tard."
 }
-# URL per provar totes les possibles sortides:
+### URL per provar totes les possibles sortides:
 http://192.168.144.132:10050//tapatapp/getUser?name=usuari1
+
+## Diagrama de Flujo - Pantallas tapatApp
+
+[Diagrama de flujo](pantallasTapatApp.mermaid)

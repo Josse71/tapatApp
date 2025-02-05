@@ -66,4 +66,4 @@ Si us plau, revisa el teu input."
 "message": "Error intern al servidor. Si us plau, torni-ho a provar més tard."
 }
 # URL per provar totes les possibles sortides:
-http://192.168.144.158:5000//tapatapp/getUser?name=usuari1
+http://192.168.144.132:10050//tapatapp/getUser?name=usuari1

@@ -8,7 +8,7 @@
 
 [HTTP RESPONSE](httpResponse.md)
 
-# PROTOTIP 2 [PROTOTIP2](prototip2.md)
+[PROTOTIP2](prototip2.md)
 
 ## Definició dels EndPoints del Servei Web:
 

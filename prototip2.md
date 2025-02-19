@@ -2,6 +2,8 @@
 
 [Diagrama de flujo](pantallasTapatApp.mermaid)
 
+![alt text](image.png)
+
 ## Datos de entrada del usuario
 
 ### Inicio

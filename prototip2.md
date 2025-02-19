@@ -26,7 +26,7 @@
 
 ## Descripción de qué implementaremos
 
-
+- Implementaremos el login y el cuidado de los infantes.
 
 ## Diagrama arquitectura PROTOTIP 2
 

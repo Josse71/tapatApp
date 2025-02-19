@@ -23,3 +23,13 @@
 - - Editar perfil: Aquí el usuario puede modificar sus datos personales, añadir nueva información o actualizar cuaqluier apartado personal que desee.
 - - Configuraciones generales: Aquí se puede personalizar el aspecto de la aplicación (modo oscuro, tamaño de texto).
 - Cerrar sesión: El usuario deberá confirmar que quiere cerrar sesión.
+
+## Descripción de qué implementaremos
+
+
+
+## Diagrama arquitectura PROTOTIP 2
+
+[Diagrama de flujo](prototip2/diagramaDades.mermaid)
+
+![alt text](image-1.png)

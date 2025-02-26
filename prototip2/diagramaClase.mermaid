@@ -1,0 +1,53 @@
+classDiagram
+    class Usuario {
+        id: int
+        nombre: string
+        email: string
+        contraseña: string
+        +login()
+        +registrar()
+        +recuperarContraseña()
+        +cerrarSesion()
+    }
+
+    class PantallaPrincipal {
+        listaDeNiños: list
+        +seleccionarNiño()
+        +verHorasActivas()
+        +configurar()
+        +editarPerfil()
+        +cerrarSesion()
+    }
+
+    class Nino {
+        nombre: string
+        edad: int
+        horasActivas: int
+        +seleccionarNiño()
+        +verHorasActivas()
+    }
+
+    class Configuración {
+        configuracionesGenerales: string
+        +editarPerfil()
+        +modificarDatosPersonales()
+    }
+
+    class RecuperaciónContraseña {
+        email: string
+        nuevaContraseña: string
+        +recuperarContraseña()
+    }
+
+    class Contacto {
+        nombre: string
+        email: string
+        mensaje: string
+        +enviarMensaje()
+    }
+
+    Usuario --> PantallaPrincipal : interactúa con
+    PantallaPrincipal --> Nino : tiene una lista de
+    PantallaPrincipal --> Configuración : tiene una relación con
+    PantallaPrincipal --> RecuperaciónContraseña : tiene una relación con
+    Usuario --> Contacto : interactúa con

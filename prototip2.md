@@ -26,10 +26,16 @@
 
 ## Descripción de qué implementaremos
 
-- Implementaremos el login y el cuidado de los infantes.
+- En este Prototipo 2, se implementará un sistema de login que permitirá registrarse e iniciar sesión con un nombre de usuario (correo electrónico) y contraseña. Luego, a partir de los datos del usuario (tutor), se podrá visualizar la información del niño con los taps.
 
-## Diagrama arquitectura PROTOTIP 2
+## BACKEND PROTOTIP 2
 
-[Diagrama de flujo](prototip2/diagramaDades.mermaid)
+[Diagrama de flujo](prototip2/backendP2.mermaid)
 
-![alt text](image-2.png)
+![alt text](image-3.png)
+
+## FRONTEND PROTOTIP 2
+
+[Diagrama de flujo](prototip2/frontendP2.mermaid)
+
+![alt text](image-4.png)

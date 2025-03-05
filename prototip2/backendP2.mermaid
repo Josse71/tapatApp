@@ -1,0 +1,93 @@
+classDiagram
+    class Webservice {
+        +showUserInfo(User)
+        +showChildInfo(Child)
+        +showTapInfo(Tap)
+    }
+
+    class DAOUser {
+        +User[] usuarios
+        +getUserById(id)
+    }
+
+    class User {
+        +String username
+        +String email
+        +String password
+    }
+
+    class DAOChild {
+        +Child[] niños
+        +getChildByUserId(User id)
+    }
+
+    class Child {
+        +int child_id
+        +String child_name
+        +String state
+        +Tap last_tap
+    }
+
+    class Tap {
+        +int sleep_total
+        +int time_slept
+        +int time_remaining
+        +Date start_date
+        +Date end_date
+    }
+
+    class Cliente {
+        +User usuario
+        +PantallaPrincipal pantallaPrincipal
+        +Child niño
+        +Configuracion configuracion
+        +login()
+        +mostrarInformacionNiño()
+        +editarConfiguracion()
+        +cerrarSesion()
+    }
+
+    class PantallaPrincipal {
+        +listaDeNiños: list
+        +seleccionarNiño()
+        +verHorasActivas()
+        +configurar()
+        +editarPerfil()
+        +cerrarSesion()
+    }
+
+    class Configuracion {
+        +configuracionesGenerales: string
+        +editarPerfil()
+        +modificarDatosPersonales()
+    }
+
+    class RecuperacionContraseña {
+        +email: string
+        +nuevaContraseña: string
+        +recuperarContraseña()
+    }
+
+    class Contacto {
+        +nombre: string
+        +email: string
+        +mensaje: string
+        +enviarMensaje()
+    }
+
+    Webservice --> DAOUser: Demanda info usuario
+    DAOUser --> User: Obtiene info usuario
+    DAOUser --> Webservice: Responde con info usuario <br> si existe
+    Webservice --> DAOChild: Demanda info niño
+    DAOChild --> Child: Obtiene info niño
+    DAOChild --> Webservice: Responde con info niño <br> si existe
+    DAOChild --> Tap: Obtiene info tap del niño
+    Cliente --> Usuario : Usa
+    Cliente --> PantallaPrincipal : Usa
+    Cliente --> Child : Usa
+    Cliente --> Configuracion : Usa
+    Usuario --> Contacto : Puede interactuar con
+    PantallaPrincipal --> Nino : Tiene una lista de
+    PantallaPrincipal --> Configuracion : Relacionado con
+    PantallaPrincipal --> RecuperacionContraseña : Relacionado con
+

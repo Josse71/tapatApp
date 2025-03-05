@@ -1,0 +1,82 @@
+classDiagram
+    class Vista {
+        +String username
+        +mostrarInformacioUser(Usuario usuario)
+        +mostrarChild(Usuario id)
+        +mostrarError(Error error)
+    }
+
+    class Usuario {
+        -int id
+        +String username
+        +String email
+        -String password
+        +login()
+        +registrar()
+        +recuperarContraseña()
+        +cerrarSesion()
+    }
+
+    class PantallaPrincipal {
+        +listaDeNiños: list
+        +seleccionarNiño()
+        +verHorasActivas()
+        +configurar()
+        +editarPerfil()
+        +cerrarSesion()
+    }
+
+    class Nino {
+        +String nombre
+        +int edad
+        +int horasActivas
+        +seleccionarNiño()
+        +verHorasActivas()
+    }
+
+    class Configuración {
+        +configuracionesGenerales: string
+        +editarPerfil()
+        +modificarDatosPersonales()
+    }
+
+    class RecuperaciónContraseña {
+        +email: string
+        +nuevaContraseña: string
+        +recuperarContraseña()
+    }
+
+    class Contacto {
+        +nombre: string
+        +email: string
+        +mensaje: string
+        +enviarMensaje()
+    }
+
+    class Error {
+        +int code
+        +String descripcion
+    }
+
+    class UserDAO {
+        +List<Usuario> Users
+        +getAllUsers(): List
+        +getUserByUsername(username: String): Usuario
+    }
+
+    class ChildDAO {
+        +List<Nino> Children
+        +getChildren(): List
+        +getChildByUserId(userId: int): Nino
+    }
+
+    Vista ..> UserDAO : Consulta a
+    UserDAO ..> Vista : Responde a la petición
+    UserDAO ..> ChildDAO : Contiene info de niños
+    ChildDAO ..> UserDAO : Responde con info de niños
+
+    Usuario --> PantallaPrincipal : Interactúa con
+    PantallaPrincipal --> Nino : Tiene una lista de
+    PantallaPrincipal --> Configuración : Relacionado con
+    PantallaPrincipal --> RecuperaciónContraseña : Relacionado con
+    Usuario --> Contacto : Puede interactuar con

@@ -10,7 +10,7 @@
 
 [PROTOTIP2](prototip2.md)
 
-[PROTOTIP3](readmeP3.md)
+[PROTOTIP3](./prototip3/readmeP3.md)
 
 ## Definició dels EndPoints del Servei Web:
 

@@ -10,6 +10,8 @@
 
 [PROTOTIP2](prototip2.md)
 
+[PROTOTIP3](readmeP3.md)
+
 ## Definició dels EndPoints del Servei Web:
 
 - Descripció: Servicio que consulta un Usuario por username.

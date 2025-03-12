@@ -9,3 +9,5 @@ Un joc de telèfon mòbil on participen 2 jugadors cadascun amb la seva pròpia 
 - Si un dels 2 jugadors deixa la partida (o es perd la connexió) la partida acaba.
 
 Exercici: Desenvolupa el diagrama de seqüència del Joc
+
+[Diagrama de Secuencia](diagramasecuenciaEX.mermaid)

@@ -15,6 +15,9 @@ Exercici: Desenvolupa el diagrama de seqüència del Joc
 ### Login
 
 1. Dissenyar el diagrama de Seqüència de Login (Classe)
+
 [Diagrama de Secuencia](diagramaSeqLogin.mermaid)
 
 2. Dissenyar el diagrama de Seqüència d'autenticació amb Token (Login automàtic)
+
+[Diagrama de Secuencia](diagramaSeqLoginToken.mermaid)

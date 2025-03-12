@@ -11,3 +11,10 @@ Un joc de telèfon mòbil on participen 2 jugadors cadascun amb la seva pròpia 
 Exercici: Desenvolupa el diagrama de seqüència del Joc
 
 [Diagrama de Secuencia](diagramasecuenciaEX.mermaid)
+
+### Login
+
+1. Dissenyar el diagrama de Seqüència de Login (Classe)
+[Diagrama de Secuencia](diagramaSeqLogin.mermaid)
+
+2. Dissenyar el diagrama de Seqüència d'autenticació amb Token (Login automàtic)

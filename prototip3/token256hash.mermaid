@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant Usuario
+    participant Servidor
+
+    Usuario->>Servidor: Enviar credenciales (POST)
+    Servidor-->>Servidor: Validar credenciales
+    alt Credenciales válidas
+        Servidor->>Servidor: Generar token de 256 caracteres con hash
+        Servidor->>Usuario: Enviar token
+    else Credenciales inválidas
+        Servidor->>Usuario: Enviar mensaje de error
+    end

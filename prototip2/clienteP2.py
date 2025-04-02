@@ -1,112 +1,131 @@
 import requests
+from newDades import User, Child, Tap
 
-# Clase Usuario
-class Usuario:
-    def __init__(self, id, nombre, email, contraseña):
-        self.id = id
-        self.nombre = nombre
-        self.email = email
-        self.contraseña = contraseña
-    
-    def login(self):
-        print(f"{self.nombre} ha iniciado sesión con éxito.")
-    
-    def registrar(self):
-        print(f"{self.nombre} ha sido registrado con éxito.")
-    
-    def recuperarContraseña(self):
-        print(f"Contraseña de {self.nombre} recuperada con éxito.")
-    
-    def cerrarSesion(self):
-        print(f"{self.nombre} ha cerrado sesión.")
+# ---- LOGIN ----
+class DAOUser:
+    def getUserByCredentials(username, password):
+        responseGetUser = requests.get(f'http://localhost:10050/prototip2/login/{username}/{password}')  # El DAO rep el username i fa una Request HTTP de tipus GET al endpoint indicat
+        
+        if responseGetUser.status_code == 200: # Si la resposta es existosa, es converteix les dades del user que envia el server a format JSON i es guarden en la variable userData
+            userData = responseGetUser.json()
+            user = User(userData['id'], userData['username'], userData['password'], userData['email']) # Amb les dades extretes, es crea un usuari i es retorna 
+            return user
+        else:
+            return None            
 
-# Clase Niño
-class Nino:
-    def __init__(self, nombre, edad, horasActivas):
-        self.nombre = nombre
-        self.edad = edad
-        self.horasActivas = horasActivas
-    
-    def seleccionarNiño(self):
-        print(f"Niño seleccionado: {self.nombre}, Edad: {self.edad}")
-    
-    def verHorasActivas(self):
-        print(f"{self.nombre} tiene {self.horasActivas} horas activas.")
+class LoginView: 
+    def __init__(self, username, password):
+        self.username=username
+        self.password=password
 
-# Clase Configuración
-class Configuración:
-    def __init__(self, configuracionesGenerales):
-        self.configuracionesGenerales = configuracionesGenerales
-    
-    def editarPerfil(self):
-        print("Perfil editado con éxito.")
-    
-    def modificarDatosPersonales(self):
-        print("Datos personales modificados con éxito.")
+    # getters dels credencials per consola
+    def getUsernameByConsole():
+        username = str(input(" Introdueixi el seu username: "))
+        return username
+    def getPasswordByConsole():
+        password = str(input(" Introdueixi el seu password: "))
+        return password
 
-# Clase RecuperaciónContraseña
-class RecuperacionContraseña:
-    def __init__(self, email, nuevaContraseña):
-        self.email = email
-        self.nuevaContraseña = nuevaContraseña
-    
-    def recuperarContraseña(self):
-        print(f"Contraseña para {self.email} recuperada con éxito.")
+    # showInfo del user dels credencials. No només printea, també retorna el user per així poder guardar la id al main com a token d'autentificació un cop fet el login   
+    def showUserInfo(username, password):
+        user = DAOUser.getUserByCredentials(username, password)
+        if (user):
+            print("\nInici de sessió correcte! \n")
+            print("‍ --- User info --- ")
+            print(f"    Username: {user.username}")
+            print(f"    Password: {user.password}")
+            print(f"    Email: {user.email}")
+            return user
+        else:
+            print(" ERROR: Credencials incorrectes")
+            print()
+            return None
 
-# Clase Contacto
-class Contacto:
-    def __init__(self, nombre, email, mensaje):
-        self.nombre = nombre
-        self.email = email
-        self.mensaje = mensaje
-    
-    def enviarMensaje(self):
-        print(f"Mensaje enviado de {self.nombre} a {self.email}: {self.mensaje}")
+# ---- CHILD & TAPS----
+class DAOChild:
+    def getChildByUser(user_id):
+        #faig petició al endpoint per cridar el getChildByUser del server, aconseguir les dades del Child i guardar-les en un response
+        responseGetChild = requests.get(f'http://localhost:10050/prototip2/children/{user_id}') 
 
-# Clase PantallaPrincipal
-class PantallaPrincipal:
-    def __init__(self):
-        self.listaDeNinos = []
-    
-    def seleccionarNiño(self, nino):
-        self.listaDeNinos.append(nino)
-        print(f"Niño {nino.nombre} añadido a la lista.")
-    
-    def verHorasActivas(self, nino):
-        nino.verHorasActivas()
-    
-    def configurar(self, configuracion):
-        print("Configuración abierta.")
-        configuracion.editarPerfil()
-        configuracion.modificarDatosPersonales()
-    
-    def cerrarSesion(self, usuario):
-        usuario.cerrarSesion()
+        #Si el response és exitós, converteixo les dades obtingudes en format json i les guardo en una llista de diccionaris "children" utilitzant un list comprehension, on cada diccionari tindrà les dades d'un child
+        if responseGetChild.status_code == 200:
+            childrenData = responseGetChild.json()
+            children = [
+                Child(
+                    id=child["id"],
+                    child_name=child["child_name"],
+                    sleep_average=child.get("sleep_average", 0),  #default 0 per si no está en el JSON
+                    treatment_id=child.get("treatment_id", None),
+                    time=child.get("time", 0)
+                ) for child in childrenData
+            ]
+            return children
 
-# Simulación de interacción con el usuario (cliente)
-class Cliente:
-    def __init__(self):
-        # Creación de objetos
-        self.usuario = Usuario(1, "Juan", "juan@example.com", "password123")
-        self.pantallaPrincipal = PantallaPrincipal()
-        self.configuracion = Configuración("Configuración General")
-        self.nino = Nino("Carlos", 8, 50)
-    
-    def login(self):
-        self.usuario.login()
-        self.pantallaPrincipal.seleccionarNiño(self.nino)
-    
-    def mostrarInformacionNiño(self):
-        self.pantallaPrincipal.verHorasActivas(self.nino)
-    
-    def editarConfiguracion(self):
-        self.pantallaPrincipal.configurar(self.configuracion)
-    
-    def cerrarSesion(self):
-        self.pantallaPrincipal.cerrarSesion(self.usuario)
+    def getAllTaps(child_id):
+        responseGetAllTaps = requests.get(f'http://localhost:10050/prototip2/taps/{child_id}')
 
-# Interacción del cliente
+        if responseGetAllTaps.status_code == 200:
+            allTapsData = responseGetAllTaps.json()
+            taps = [
+                Tap(
+                    id = tap["id"],
+                    child_id = tap["child_id"],
+                    status_id = tap["status_id"],
+                    user_id = tap["user_id"],
+                    init = tap["init"],
+                    end = tap["end"]
+                ) for tap in allTapsData
+            ]
+            return taps
+
+class ChildrenView:
+    def showChildInfo(user_id):
+        children = DAOChild.getChildByUser(user_id)
+        if children:
+            print("\n --- Children info --- ")
+            child_ids = []
+            for child in children:
+                print(f"    ID: {child.id}")
+                print(f"    Nombre: {child.child_name}")
+                print(f"    Mediana de sueño: {child.sleep_average}")
+                print()
+                child_ids.append(child.id)
+            return child_ids
+        else:
+            print(" ERROR: Child not found\n")
+            print()
+            return None
+
+class TapView:
+    def showAllTaps(child_id):
+        taps = DAOChild.getAllTaps(child_id)
+        if taps:
+           for tap in taps:
+               print(f" --- Tap #{tap.id} info --- ")
+               print(f"    Tap ID: {tap.id}")
+               print(f"    Child ID: {tap.child_id}")
+               print(f"    Estado: {tap.status_id}")
+               print(f"    Inici: {tap.init}")
+               print(f"    Final: {tap.end}")
+               print()
+        else:
+            print(" ERROR: Taps not found\n")
+
+# ---- MAIN ----
 if __name__ == "__main__":
-    cliente = Cliente()
-    cliente.login()  # Iniciar sesión
-    cliente.mostrarInformacionNiño()  # Ver horas activas de un niño
+    username = LoginView.getUsernameByConsole()
+    password = LoginView.getPasswordByConsole()
+    user = LoginView.showUserInfo(username, password)
+
+    if user:
+        user_id_token = user.id
+    else:
+        exit()
+    
+    child_ids_tokens = ChildrenView.showChildInfo(user_id_token)
+    if child_ids_tokens:
+        for child_id in child_ids_tokens:
+            TapView.showAllTaps(child_id)
+    else:
+        exit()
+    

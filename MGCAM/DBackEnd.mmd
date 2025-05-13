@@ -1,0 +1,29 @@
+classDiagram
+    direction BT
+    class Usuario {
+        +int id_usuario
+        +string nombre_usuario
+        +string email
+        +string contrasena_md5
+        +string telefono
+        +string rol
+    }
+    class Imagen {
+        +int id_imagen
+        +string ruta_imagen
+        +string descripcion
+        +string titulo
+        +date fecha_subida
+        +int id_usuario
+    }
+    class Sesion {
+        +int id_sesion
+        +int id_usuario
+        +date fecha_inicio
+        +date fecha_fin
+        +string estado
+    }
+
+    Usuario -- Imagen : gestiona
+    Usuario -- Sesion : inicia
+    Imagen -- Usuario : pertenece_a
